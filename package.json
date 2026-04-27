@@ -1,0 +1,81 @@
+{
+  "name": "autoredact",
+  "version": "1.0.0",
+  "description": "A JSON logger that strips secrets and PII out of every record.",
+  "keywords": [
+    "auto-redact",
+    "json-logger",
+    "logger",
+    "logging",
+    "pii",
+    "redact",
+    "secrets",
+    "structured-logging"
+  ],
+  "homepage": "https://github.com/chicong065/autoredact#readme",
+  "bugs": {
+    "url": "https://github.com/chicong065/autoredact/issues"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Cong Nguyen",
+    "url": "https://github.com/chicong065"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chicong065/autoredact.git"
+  },
+  "bin": {
+    "autoredact-scan": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "bench": "vitest bench",
+    "build": "tsdown",
+    "check": "pnpm lint && pnpm format:check && pnpm typecheck && pnpm test",
+    "dev": "tsdown --watch",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "oxlint",
+    "lint:fix": "oxlint --fix",
+    "prepublishOnly": "pnpm check && pnpm build",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@vitest/coverage-v8": "^2.1.0",
+    "oxfmt": "^0.46.0",
+    "oxlint": "^1.61.0",
+    "oxlint-tsgolint": "^0.22.0",
+    "tsdown": "^0.21.0",
+    "typescript": "^5.6.0",
+    "vitest": "^2.1.0"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "packageManager": "pnpm@10.18.3"
+}
